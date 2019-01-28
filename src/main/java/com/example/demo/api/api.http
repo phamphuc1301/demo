@@ -1,0 +1,11 @@
+
+#### GET ALL CLAZZ
+GET localhost:8080/api/clazz
+
+### SAVE A CLAZZ TO DATABASE
+POST {{host}}/class
+Content-Type: application/json
+{
+    "name" : "Class 1",
+    "students" : [{"id" :1, "name":"Peter","clazz":null}]
+}

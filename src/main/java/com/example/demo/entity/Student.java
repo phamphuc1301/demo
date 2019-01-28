@@ -1,4 +1,6 @@
 package com.example.demo.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -9,13 +11,15 @@ public class Student implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     @Id
-    private Integer id;
+    private int id;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "school")
-    private String school;
+    @JsonIgnore
+    @JoinColumn(name = "class")
+    @ManyToOne
+    private Clazz clazz;
 
     public String getName() {
         return name;
@@ -33,11 +37,11 @@ public class Student implements Serializable {
         this.id = id;
     }
 
-    public String getSchool() {
-        return school;
+    public Clazz getClazz() {
+        return clazz;
     }
 
-    public void setSchool(String school) {
-        this.school = school;
+    public void setClazz(Clazz clazz) {
+        this.clazz = clazz;
     }
 }
